@@ -1,42 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{{asset('static/css/app.css')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <div class="wrap">
-        <header class="head">
-            <a href="#" class="logo"></a>
-
-            <nav class="main-nav">
-                <ul class="main-nav-list">
-                    <li class="main-nav-item active">
-                        <a href="/static/notes.html" class="main-nav-link">
-                            <i class="icon icon-th-list"></i>
-                            <span>Ver notas</span>
-                        </a>
-                    </li>
-                    <li class="main-nav-item">
-                        <a href="/static/add-note.html" class="main-nav-link">
-                            <i class="icon icon-pen"></i>
-                            <span>Nueva nota</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        @extends('layout')
+        
+        @section('content')
         <main class="content">
             <div class="cards">
+                @forelse($notas as $nota)
                 <div class="card card-small">
                     <div class="card-body">
-                        <h4>¿Para qué sirve Composer?</h4>
+                        <h4> {{ $nota }} </h4>
 
                         <p>
-                            Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony,
-                            así como componentes para generar PDF, procesar pagos con tarjetas, manipular imágenes y mucho más.
+                            {{ $nota }}
                         </p>
                     </div>
 
@@ -49,6 +22,9 @@
                         </a>
                     </footer>
                 </div>
+                @empty 
+                    <p> No hay Registros que mostrar <a href="/agregar" > Agragar nota</a><p>
+                @endforelse
                 <div class="card">
                     <div class="card-body">
                         <h4>Instalación de Laravel</h4>
@@ -152,17 +128,4 @@
                 </div>
             </div>
         </main>
-        <footer class="foot">
-            <div class="ad">
-                <p>
-                    Esta aplicación es desarrollada en el curso BASE DE DATOS II
-                    <a href="#">ING EN PRODUCCIÓN MULTIMEDIA</a>.
-                </p>
-            </div>
-            <div class="license">
-                <p>© 2022 Derechos Reservados - ULSA NOROESTE</p>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>
+        @endsection
