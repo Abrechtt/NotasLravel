@@ -16,12 +16,18 @@ Route::get('/', function () {
 });
 
 Route::get('notas', function () {
-    return view('notas');
-});
+    $nota = [ 
+        'Primera Nota',
+        'Segunda Nota',
+        'Tercera Nota',
+        'Cuarta Nota',
+    ];
+    return view('notas',['notas' => $notas]);
+})->name('listar');
 
 Route::get('agregar', function() {
     return view('agregar');
-});
+})->name('nuevanota');
 
 Route::get('editar', function() {
     return view('editar');
